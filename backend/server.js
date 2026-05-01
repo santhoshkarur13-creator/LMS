@@ -21,8 +21,8 @@ app.use('/api/borrow', borrowRoutes);
 app.use('/api/fines', fineRoutes);
 app.use('/api/members', memberRoutes);
 
-const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/library_system';
+const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI)
   .then(() => {
