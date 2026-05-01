@@ -67,11 +67,11 @@ const Login = () => {
           
           <div className="input-group">
             <label>Email Address</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="email@example.com" />
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="admin@library.com" />
           </div>
           <div className="input-group">
             <label>Password</label>
-            <input type="password" name="password" value={formData.password} onChange={handleChange} required placeholder="••••••••" />
+            <input type="password" name="password" value={formData.password} onChange={handleChange} required placeholder="admin123" />
           </div>
 
           {!isLogin && (
