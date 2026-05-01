@@ -22,7 +22,7 @@ const AdminDashboard = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/members', {
+      const res = await axios.get('https://lms-z8dd.onrender.com/api/members', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMembers(res.data);
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/books', {
+      const res = await axios.get('https://lms-z8dd.onrender.com/api/books', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBooks(res.data);
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
   const handleAddBook = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/books', newBook, {
+      await axios.post('https://lms-z8dd.onrender.com/api/books', newBook, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMsg({ text: 'Book added successfully', type: 'success' });
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
   const handleIssueBook = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/borrow', issueData, {
+      await axios.post('https://lms-z8dd.onrender.com/api/borrow', issueData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMsg({ text: 'Book issued successfully', type: 'success' });
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
   const handleReturnBook = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:5000/api/borrow/${returnId}/return`, {}, {
+      const res = await axios.put(`https://lms-z8dd.onrender.com/api/borrow/${returnId}/return`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMsg({ text: `Book returned. Fine: $${res.data.fineAmount}`, type: 'success' });
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
   const handleUpdateBook = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/books/${editingBook._id}`, editingBook, {
+      await axios.put(`https://lms-z8dd.onrender.com/api/books/${editingBook._id}`, editingBook, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMsg({ text: 'Book updated successfully', type: 'success' });
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
   const handleDeleteBook = async (id) => {
     if (!window.confirm('Are you sure you want to delete this book?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`, {
+      await axios.delete(`https://lms-z8dd.onrender.com/api/books/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMsg({ text: 'Book deleted successfully', type: 'success' });

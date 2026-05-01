@@ -14,7 +14,7 @@ const Catalog = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/books?search=${search}`, {
+      const res = await axios.get(`https://lms-z8dd.onrender.com/api/books?search=${search}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBooks(res.data);
@@ -32,9 +32,9 @@ const Catalog = () => {
       <div className="search-bar">
         <div className="input-group" style={{ flex: 1, marginBottom: 0, position: 'relative' }}>
           <Search size={20} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-          <input 
-            type="text" 
-            placeholder="Search by title, author, or genre..." 
+          <input
+            type="text"
+            placeholder="Search by title, author, or genre..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             style={{ paddingLeft: '3rem' }}
@@ -54,7 +54,7 @@ const Catalog = () => {
                 <p className="card-subtitle">by {book.author}</p>
               </div>
             </div>
-            
+
             <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
               <span className="badge" style={{ background: 'rgba(139, 92, 246, 0.1)', color: '#a78bfa', border: '1px solid rgba(139, 92, 246, 0.2)' }}>{book.genre}</span>
               <span className="badge" style={{ background: 'rgba(148, 163, 184, 0.1)', color: '#cbd5e1', border: '1px solid rgba(148, 163, 184, 0.2)' }}>ISBN: {book.isbn}</span>

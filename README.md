@@ -47,7 +47,7 @@ A modern, responsive digital library system built with MongoDB, Express, React, 
 To start managing the library, you need an Admin account. 
 You can create the default admin account by making a POST request to `/api/auth/setup-admin`.
 ```bash
-curl -X POST http://localhost:5000/api/auth/setup-admin
+curl -X POST https://lms-z8dd.onrender.com/api/auth/setup-admin
 ```
 This will create an admin with:
 - **Email:** admin@library.com

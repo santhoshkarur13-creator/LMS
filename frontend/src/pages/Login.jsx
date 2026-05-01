@@ -22,17 +22,17 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setMsg('');
-    
+
     try {
       if (isLogin) {
-        const res = await axios.post('http://localhost:5000/api/auth/login', { 
-          email: formData.email, 
-          password: formData.password 
+        const res = await axios.post('https://lms-z8dd.onrender.com/api/auth/login', {
+          email: formData.email,
+          password: formData.password
         });
         login(res.data.token, res.data.user);
         navigate(res.data.user.role === 'admin' ? '/admin' : '/catalog');
       } else {
-        const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+        const res = await axios.post('https://lms-z8dd.onrender.com/api/auth/register', formData);
         setMsg(`Registration successful! Your Membership No: ${res.data.membership_no}`);
         setIsLogin(true);
         setFormData({ ...formData, password: '' }); // keep email for easy login
@@ -53,7 +53,7 @@ const Login = () => {
         <h1 className="auth-title" style={{ marginBottom: '1rem' }}>
           {isLogin ? 'Welcome Back' : 'Become a Member'}
         </h1>
-        
+
         {error && <div style={{ color: 'var(--error-color)', marginBottom: '1rem', textAlign: 'center', padding: '0.5rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px' }}>{error}</div>}
         {msg && <div style={{ color: 'var(--success-color)', marginBottom: '1rem', textAlign: 'center', padding: '0.5rem', background: 'rgba(34, 197, 94, 0.1)', borderRadius: '8px' }}>{msg}</div>}
 
@@ -64,7 +64,7 @@ const Login = () => {
               <input type="text" name="name" value={formData.name} onChange={handleChange} required />
             </div>
           )}
-          
+
           <div className="input-group">
             <label>Email Address</label>
             <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="admin@library.com" />
@@ -94,8 +94,8 @@ const Login = () => {
 
         <div style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--text-muted)' }}>
           {isLogin ? "Don't have an account? " : "Already a member? "}
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={() => { setIsLogin(!isLogin); setError(''); setMsg(''); }}
             style={{ background: 'none', border: 'none', color: 'var(--primary-color)', cursor: 'pointer', fontWeight: 600, fontSize: '1rem', fontFamily: 'inherit' }}
           >

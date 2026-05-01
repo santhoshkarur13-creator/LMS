@@ -13,12 +13,12 @@ const MemberDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const borrowRes = await axios.get('http://localhost:5000/api/borrow/my', {
+      const borrowRes = await axios.get('https://lms-z8dd.onrender.com/api/borrow/my', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBorrows(borrowRes.data);
 
-      const fineRes = await axios.get('http://localhost:5000/api/fines/my', {
+      const fineRes = await axios.get('https://lms-z8dd.onrender.com/api/fines/my', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFines(fineRes.data);
@@ -32,13 +32,13 @@ const MemberDashboard = () => {
   return (
     <div className="animate-fade-in">
       <h2 style={{ marginBottom: '2rem' }}>My Dashboard</h2>
-      
+
       <div className="dashboard-grid">
-        
+
         {/* Borrows Section */}
         <div className="glass-panel" style={{ padding: '2rem' }}>
           <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>Borrow History</h3>
-          
+
           <div className="table-container">
             <table>
               <thead>
@@ -77,7 +77,7 @@ const MemberDashboard = () => {
         {/* Fines Section */}
         <div className="glass-panel" style={{ padding: '2rem', alignSelf: 'start' }}>
           <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f87171' }}>My Fines</h3>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {fines.map(f => (
               <div key={f._id} style={{ padding: '1rem', background: 'rgba(15, 23, 42, 0.4)', borderRadius: '8px', borderLeft: `4px solid ${f.paid ? '#22c55e' : '#ef4444'}` }}>
